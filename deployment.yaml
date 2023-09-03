@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cpaas-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: credit-calculator
+  template:
+    metadata:
+      labels:
+        app: credit-calculator
+    spec:
+      containers:
+      - name: creditcalculator
+        image: lekewhite/creditcalculator:latest
+        ports:
+        - containerPort: 80
